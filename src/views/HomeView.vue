@@ -3,43 +3,52 @@
 export default {
     data: () => ({
       items: [
-        { text: 'Real-Time'},
-        { text: 'Audience'},
-        { text: 'Conversions'},
+        { text: 'Juanita Perez JR.'},
       ],
+      filterItem: [],
+      word: '',
     }),
+    created:function() {
+      this.filterItem = [...this.items]
+    },
+    watch:{
+      word:function(){
+        this.filterItem = this.items.filter(item => item.text.toLowerCase().includes(this.word.toLowerCase()))
+      }
+    }
   }
 </script>
 
 <template>
   <main class="px-4">
-    <v-text-field
-        hide-details
-        append-icon="mdi-magnify"
-        single-line
-        full-width
-      ></v-text-field>
-    <h2 class="py-4">Hijos</h2>
-    <router-link 
-      v-for="(item,i) in items"
-      :key="i"
-      to="/ficha"
-    >
-    <v-card
+    <router-link to="/padre">
+      <v-card
       flat
       tile
-      color="grey"
-      class="pa-2 my-2 d-flex justify-space-between align-center"
-    >
-      <p>{{item.text}}</p>
-      <v-icon>mdi-message-text</v-icon>
-    </v-card>
-  </router-link>
+      color="grey lighten-2"
+      class="my-2 d-flex justify-center align-center"
+      >
+        <v-card-title>Padre</v-card-title>
+      </v-card>
+    </router-link>
+    <router-link to="/buscar">
+      <v-card
+      flat
+      tile
+      color="grey lighten-2"
+      class="my-2 d-flex justify-center align-center"
+      >
+        <v-card-title>Buscar pediatra</v-card-title>
+      </v-card>
+    </router-link>
   </main>
 </template>
 
 <style scoped>
   p{
     margin: 0;
+  }
+  a{
+    text-decoration: none;
   }
 </style>
