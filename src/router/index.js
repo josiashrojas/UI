@@ -21,13 +21,12 @@ const router = new VueRouter({
       name: 'home',
       component: HomeView
     },
+    //Borrar about
     {
       path: '/about',
       name: 'about',
       component: AboutView
     },
-
- 
     {
       path: '/padre',
       name: 'padre',
@@ -45,7 +44,7 @@ const router = new VueRouter({
       component: GraficosView
     },
     {
-       path: '/fichaPadre',
+      path: '/fichaPadre',
       name: 'fichaPadre',
       component: FichaViewPadre
     },

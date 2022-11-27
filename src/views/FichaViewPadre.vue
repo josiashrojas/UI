@@ -36,7 +36,7 @@
                     cols="8"
                     class="d-flex flex-row-reverse">
                     <router-link
-                        to="/graficos"
+                        :to="{ name: 'graficos', params: { title: 'Peso', data: peso }, query: { debug: true }}"
                     >
                         <v-btn
                             elevation="2"
@@ -56,7 +56,7 @@
                     class="d-flex flex-row-reverse"
                 >
                 <router-link
-                        to="/graficos"
+                :to="{ name: 'graficos', params: { title: 'Alto', data: alto }, query: { debug: true }}"
                     >
                     <v-btn
                         elevation="2"
@@ -76,7 +76,7 @@
                     class="d-flex flex-row-reverse"
                 >
                     <router-link
-                        to="/graficos"
+                    :to="{ name: 'graficos', params: { title: 'IMC', data: imc }, query: { debug: true }}"
                     >
                     <v-btn
                         elevation="2"
@@ -102,3 +102,67 @@
         margin: 0;
     }
 </style>
+
+<script>
+export default {
+    data: () => ({
+        peso: {
+            labels: ["Jan", "Feb", "Mar", "Apr","May","Jun"],
+            datasets:[{
+                label: 'Peso real',
+                data: [35, 40, 42, 44, 35, 37, 40],
+                fill: false,
+                borderColor: 'rgba(75, 192, 192)',
+                backgroundColor : 'rgba(75, 192, 192)',
+                tension: 0.1
+            },
+            {
+                label: 'Peso ideal',
+                data: [36, 41, 43, 45, 36, 38, 42],
+                fill: false,
+                borderColor: 'rgba(0, 0, 255)',
+                backgroundColor: 'rgba(0, 0, 255)',  
+                tension: 0.1
+            }]
+        },
+        alto: {
+            labels: ["Jan", "Feb", "Mar", "Apr","May","Jun"],
+            datasets:[{
+                label: 'Alto real',
+                data: [35, 40, 42, 44, 35, 37, 40],
+                fill: false,
+                borderColor: 'rgba(75, 192, 192)',
+                backgroundColor : 'rgba(75, 192, 192)',
+                tension: 0.1
+            },
+            {
+                label: 'Alto ideal',
+                data: [36, 41, 43, 45, 36, 38, 42],
+                fill: false,
+                borderColor: 'rgba(0, 0, 255)',
+                backgroundColor: 'rgba(0, 0, 255)',  
+                tension: 0.1
+            }]
+        },
+        imc: {
+            labels: ["Jan", "Feb", "Mar", "Apr","May","Jun"],
+            datasets:[{
+                label: 'IMC real',
+                data: [35, 40, 42, 44, 35, 37, 40],
+                fill: false,
+                borderColor: 'rgba(75, 192, 192)',
+                backgroundColor : 'rgba(75, 192, 192)',
+                tension: 0.1
+            },
+            {
+                label: 'IMC ideal',
+                data: [36, 41, 43, 45, 36, 38, 42],
+                fill: false,
+                borderColor: 'rgba(0, 0, 255)',
+                backgroundColor: 'rgba(0, 0, 255)',  
+                tension: 0.1
+            }]
+        }
+    })
+}
+</script>

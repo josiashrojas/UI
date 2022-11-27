@@ -172,7 +172,7 @@
             alto: "",
             peso: "",
             imc: "",
-            razon:""
+            razon:"",
             }),
             created() {
             if(this.$route.query.debug) {

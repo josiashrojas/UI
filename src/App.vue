@@ -7,7 +7,7 @@
     >
       <v-app-bar-nav-icon @click="drawer = true"></v-app-bar-nav-icon>
 
-      <v-toolbar-title>Title</v-toolbar-title>
+      <v-toolbar-title>{{ title }}</v-toolbar-title>
     </v-app-bar>
 
     <v-navigation-drawer
@@ -56,6 +56,7 @@ export default {
   name: 'App',
 
   data: () => ({
+    title: "",
     drawer: false,
     group: null,
   }),
