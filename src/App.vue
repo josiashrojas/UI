@@ -23,22 +23,63 @@
           v-model="group"
           active-class="deep-purple--text text--accent-4"
         >
-          <router-link to="/">
-          <v-list-item>
-            <v-list-item-icon>
-              <v-icon>mdi-home</v-icon>
-            </v-list-item-icon>
-            <v-list-item-title>Home</v-list-item-title>
-          </v-list-item>
-          </router-link>
-          <router-link to="/about">
-          <v-list-item>
-            <v-list-item-icon>
-              <v-icon>mdi-account</v-icon>
-            </v-list-item-icon>
-            <v-list-item-title>Account</v-list-item-title>
-          </v-list-item>
-          </router-link>
+          <div v-if="mode == 'padre'">
+            <v-container class="px-4">
+              <v-text-field
+                  hide-details
+                  append-icon="mdi-magnify"
+                  single-line
+                  full-width
+                  onchange="filter"
+                  v-model="word"
+                ></v-text-field>
+              <h2 class="py-4">Hijos</h2>
+              <p v-if="filterItem.length == 0">No existen coincidencias</p>
+              <router-link 
+                v-for="(item,i) in filterItem"
+                :key="i"
+                to="/fichaPadre"
+              >
+              <v-card
+                flat
+                tile
+                color="grey lighten-2"
+                class="pa-2 my-2 d-flex justify-space-between align-center"
+              >
+                <p>{{item.text}}</p>
+              </v-card>
+            </router-link>
+            </v-container>
+          </div>
+          <div v-else>
+            <router-link 
+                to="/buscar"
+              >
+            <v-card
+                flat
+                tile
+                color="grey lighten-2"
+                class="pa-2 my-2 text-center"
+              >
+              <p>Buscar pacientes</p>
+            </v-card>
+            </router-link>
+            <h2>Pacientes Recientes</h2>
+            <router-link 
+                v-for="(item,i) in filterItem"
+                :key="i"
+                to="/fichaPadre"
+              >
+              <v-card
+                flat
+                tile
+                color="grey lighten-2"
+                class="pa-2 my-2 d-flex justify-space-between align-center"
+              >
+                <p>{{item.text}}</p>
+              </v-card>
+            </router-link>
+          </div>
         </v-list-item-group>
       </v-list>
     </v-navigation-drawer>
@@ -59,6 +100,35 @@ export default {
     title: "",
     drawer: false,
     group: null,
+    mode: 'padre',
+    items: [
+      { text: 'Juanita Perez JR.'},
+      { text: 'Veronica Perez'},
+      { text: 'Alfredo Perez'},
+    ],
+    itemsPediatra: [
+      { text: 'Juanita Perez JR.'},
+      { text: 'Veronica Perez'},
+    ],
+    filterItem: [],
+    word: '',
   }),
+  created:function() {
+    this.filterItem = this.mode == 'padre' ? [...this.items]: [...this.itemsPediatra]
+  },
+  watch:{
+    word:function(){
+      this.filterItem = this.items.filter(item => item.text.toLowerCase().includes(this.word.toLowerCase()))
+    }
+  }
 };
 </script>
+
+<style scoped>
+  p{
+    margin: 0;
+  }
+  a{
+    text-decoration: none;
+  }
+</style>
