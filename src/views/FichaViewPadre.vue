@@ -4,9 +4,9 @@
             <div 
                 class="d-flex justify-space-between"
             >
-                <v-icon>mdi-arrow-left</v-icon>
+                <v-icon @click="$router.back()">mdi-arrow-left</v-icon>
                 <div>
-                    <p>Otras vistas <v-icon>mdi-chevron-right</v-icon></p>
+                    <p>Otras visitas <v-icon>mdi-chevron-right</v-icon></p>
                 </div>
             </div>
             <p class="text-center my-4">11/12/2021</p>
@@ -36,7 +36,7 @@
                     cols="8"
                     class="d-flex flex-row-reverse">
                     <router-link
-                        :to="{ name: 'graficos', params: { title: 'Peso', data: peso }, query: { debug: true }}"
+                        :to="{ name: 'graficos', params: { title: 'Peso', data: peso, condition: 'Saludable' }, query: { debug: true }}"
                     >
                         <v-btn
                             elevation="2"
@@ -56,7 +56,7 @@
                     class="d-flex flex-row-reverse"
                 >
                 <router-link
-                :to="{ name: 'graficos', params: { title: 'Alto', data: alto }, query: { debug: true }}"
+                :to="{ name: 'graficos', params: { title: 'Alto', data: alto, condition: 'Enanismo' }, query: { debug: true }}"
                     >
                     <v-btn
                         elevation="2"
@@ -76,7 +76,7 @@
                     class="d-flex flex-row-reverse"
                 >
                     <router-link
-                    :to="{ name: 'graficos', params: { title: 'IMC', data: imc }, query: { debug: true }}"
+                    :to="{ name: 'graficos', params: { title: 'IMC', data: imc, condition: 'Saludable' }, query: { debug: true }}"
                     >
                     <v-btn
                         elevation="2"

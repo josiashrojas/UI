@@ -3,6 +3,10 @@
 
 <template>
     <main class="pa-4 text-center">
+        <div class="px-2 d-flex justify-space-between">
+            <v-icon @click="$router.back()">mdi-arrow-left</v-icon>
+            <div></div>
+        </div>
         <v-container>
             <!---------------------------------- Carrusel ------------------------------------------------>
             <v-card class="pa-3.5" >
@@ -40,7 +44,7 @@
                 data: this.data,
                 title: this.title,
                 conditions: ['Saludable','Problemas de Crecimiento','Gigantismo','Sobrepeso', 'Bajopeso'],
-                condition: 'Saludable',
+                condition: this.condition,
                 comentarios: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum."
             }             
         },
@@ -53,37 +57,12 @@
                 data: this.data,
                 
             });
-            // const ctx2 = document.querySelector('#Altura');
-            // const data2 = {
-            //     labels: labels,
-            //     datasets: [{
-            //         label: 'Altura real',
-            //         data: [65, 59, 80, 81, 56, 55, 40],
-            //         fill: false,
-            //         borderColor: 'rgba(75, 192, 192)',
-            //         backgroundColor : 'rgba(75, 192, 192)', 
-            //         tension: 0.1
-            //     },
-            //     {
-            //         label: 'Altura ideal',
-            //         data: [22, 59, 10, 83, 56, 15, 40],
-            //         fill: false,
-            //         borderColor: 'rgba(0, 0, 255)', 
-            //         backgroundColor: 'rgb(0, 0, 255)',
-            //         tension: 0.1
-                    
-            //     }],
-            // };
-            // const Altura = new Chart(ctx2, {
-            //     type: 'line',
-            //     data: data2,
-                
-            // });
         },
         created() {
             if(this.$route.query.debug) {
                 this.title = this.$route.params.title;
                 this.data = this.$route.params.data;
+                this.condition = this.$route.params.condition;
                 if(this.$route.query.debug) {
                     this.debug = this.$route.query.debug;
                 }
