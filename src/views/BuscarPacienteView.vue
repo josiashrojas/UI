@@ -41,7 +41,7 @@ export default {
     <router-link 
       v-for="(item,i) in filterItem"
       :key="i"
-      to="/ficha"
+      to="/fichaPediatra"
     >
     <v-card
       flat

@@ -7,6 +7,7 @@
         <v-card class="pa-3.5" >
             <p> {{title}} </p>
                     <v-sheet color="white" >
+                        <!-- <canvas height="flex" widht="flex" :id="title"></canvas> -->
                         <canvas height="flex" widht="flex" :id="title"></canvas>
                     </v-sheet >
         </v-card>              
@@ -45,7 +46,7 @@
     
         mounted() {
             const labels = ["Jan", "Feb", "Mar", "Apr","May","Jun"];
-            const ctx = document.querySelector('#Peso');
+            const ctx = document.querySelector(`#${this.title}`);
             const data = {
                 labels: labels,
                 datasets: [{
@@ -70,32 +71,32 @@
                 data: data,
                 
             });
-            const ctx2 = document.querySelector('#Altura');
-            const data2 = {
-                labels: labels,
-                datasets: [{
-                    label: 'Altura real',
-                    data: [65, 59, 80, 81, 56, 55, 40],
-                    fill: false,
-                    borderColor: 'rgba(75, 192, 192)',
-                    backgroundColor : 'rgba(75, 192, 192)', 
-                    tension: 0.1
-                },
-                {
-                    label: 'Altura ideal',
-                    data: [22, 59, 10, 83, 56, 15, 40],
-                    fill: false,
-                    borderColor: 'rgba(0, 0, 255)', 
-                    backgroundColor: 'rgb(0, 0, 255)',
-                    tension: 0.1
+            // const ctx2 = document.querySelector('#Altura');
+            // const data2 = {
+            //     labels: labels,
+            //     datasets: [{
+            //         label: 'Altura real',
+            //         data: [65, 59, 80, 81, 56, 55, 40],
+            //         fill: false,
+            //         borderColor: 'rgba(75, 192, 192)',
+            //         backgroundColor : 'rgba(75, 192, 192)', 
+            //         tension: 0.1
+            //     },
+            //     {
+            //         label: 'Altura ideal',
+            //         data: [22, 59, 10, 83, 56, 15, 40],
+            //         fill: false,
+            //         borderColor: 'rgba(0, 0, 255)', 
+            //         backgroundColor: 'rgb(0, 0, 255)',
+            //         tension: 0.1
                     
-                }],
-            };
-            const Altura = new Chart(ctx2, {
-                type: 'line',
-                data: data2,
+            //     }],
+            // };
+            // const Altura = new Chart(ctx2, {
+            //     type: 'line',
+            //     data: data2,
                 
-            });
+            // });
         },
         created() {
             this.title = 'Altura';

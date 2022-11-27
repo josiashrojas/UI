@@ -36,9 +36,6 @@
                     cols="8"
                     class="d-flex flex-row-reverse"
                 >
-                    <v-btn
-                        elevation="2"
-                    >Ver gráfico</v-btn>
                 </v-col>
             </v-row>
             <p class="my-2">Alto (cm)</p>
@@ -52,9 +49,6 @@
                     cols="8"
                     class="d-flex flex-row-reverse"
                 >
-                    <v-btn
-                        elevation="2"
-                    >Ver gráfico</v-btn>
                 </v-col>
             </v-row>
             <p class="my-2">IMC</p>
@@ -68,9 +62,6 @@
                     cols="8"
                     class="d-flex flex-row-reverse"
                 >
-                    <v-btn
-                        elevation="2"
-                    >Ver gráfico</v-btn>
                 </v-col>
             </v-row>
             <h3 class="my-2">Medidas</h3>
