@@ -57,9 +57,11 @@
                         cols="4"
                     >
                         <v-text-field
+                            v-model="annos"
                             label="Edad"
                             height="25px"
                             dense
+                            suffix="Años"
                         ></v-text-field>
                 </v-col>
             </v-row>
@@ -70,9 +72,11 @@
                     cols="5"
                 >
                     <v-text-field
-                        label="Peso (kg)"
+                        v-model="peso"
+                        label="Peso"
                         height="25px"
                         dense
+                        suffix="kg"
                     ></v-text-field>
                 </v-col>
                 <v-col
@@ -87,9 +91,11 @@
                     cols="5"
                 >
                     <v-text-field
-                        label="Alto (cm)"
+                        v-model="alto"
+                        label="Alto"
                         height="25px"
                         dense
+                        suffix="cm"
                     ></v-text-field>
                 </v-col>
                 <v-col
@@ -104,6 +110,7 @@
                     cols="5"
                 >
                     <v-text-field
+                        v-model="imc"
                         label="IMC"
                         height="25px"
                         dense
@@ -115,19 +122,37 @@
                 >
                 </v-col>
             </v-row>
-            <h3 class="my-2">Medidas</h3>
+            <h3 class="my-2">Razón de visita</h3>
             <v-row>
                 <v-col
                     cols="12"
                     md="6"
                 >
                     <v-textarea
+                    v-model="razon"
                     solo
                     name="input-7-4"
-                    label="Solo textarea"
                     ></v-textarea>
                 </v-col>
             </v-row>
+            <center>
+                <router-link :to="{ name: 'fichaPediatraGuardado', params: { date, annos, alto, peso, imc, razon}, query: { debug: true }}">
+                    <v-btn
+                        class="ma-2"
+                        :loading="loading4"
+                        :disabled="loading4"
+                        color="info"
+                        @click="loader = 'loading4'"
+                    >
+                    Guardar Ficha
+                    <template v-slot:loader>
+                        <span class="custom-loader">
+                        <v-icon light>mdi-cached</v-icon>
+                        </span>
+                    </template>
+                    </v-btn>
+                </router-link>
+            </center>
         </v-container>
     </main>
 </template>
@@ -142,7 +167,25 @@
     export default {
         data: () => ({
             date: (new Date(Date.now() - (new Date()).getTimezoneOffset() * 60000)).toISOString().substr(0, 10),
-                menu: false,
+            menu: false,
+            annos: "",
+            alto: "",
+            peso: "",
+            imc: "",
+            razon:""
             }),
+            created() {
+            if(this.$route.query.debug) {
+                this.date = this.$route.params.date;
+                this.annos = this.$route.params.annos;
+                this.alto = this.$route.params.alto;
+                this.peso = this.$route.params.peso;
+                this.imc = this.$route.params.imc;
+                this.razon = this.$route.params.razon;
+                if(this.$route.query.debug) {
+                    this.debug = this.$route.query.debug;
+                }
+            }
+        },
     }
 </script>
