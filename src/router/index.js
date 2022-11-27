@@ -4,6 +4,7 @@ import HomeView from '../views/HomeView.vue'
 import AboutView from '../views/AboutView.vue'
 import FichaViewPadre from '../views/FichaViewPadre.vue'
 import FichaViewPediatra from '../views/FichaViewPediatra.vue'
+import FichaViewPediatraGuardado from '../views/FichaViewPediatraGuardado.vue'
 
 Vue.use(VueRouter)
 
@@ -29,6 +30,11 @@ const router = new VueRouter({
       path: '/fichaPediatra',
       name: 'fichaPediatra',
       component: FichaViewPediatra
+    },
+    {
+      path: '/fichaPediatraGuardado',
+      name: 'fichaPediatraGuardado',
+      component: FichaViewPediatraGuardado
     }
   ]
 })
