@@ -36,7 +36,7 @@
                     cols="8"
                     class="d-flex flex-row-reverse">
                     <router-link
-                        :to="{ name: 'graficos', params: { title: 'Peso', data: peso, condition: 'Saludable' }, query: { debug: true }}"
+                        :to="{ name: 'graficos', params: { title: 'Peso', data: peso, child, type: 1, condition: 'Saludable' }, query: { debug: true }}"
                     >
                         <v-btn
                             elevation="2"
@@ -55,13 +55,13 @@
                     cols="8"
                     class="d-flex flex-row-reverse"
                 >
-                <router-link
-                :to="{ name: 'graficos', params: { title: 'Alto', data: alto, condition: 'Enanismo' }, query: { debug: true }}"
-                    >
-                    <v-btn
-                        elevation="2"
-                    >Ver gráfico</v-btn>
-                </router-link>
+                  <router-link
+                    :to="{ name: 'graficos', params: { title: 'Alto', data: alto, child, type: 1, condition: 'Enanismo' }, query: { debug: true }}"
+                  >
+                      <v-btn
+                          elevation="2"
+                      >Ver gráfico</v-btn>
+                  </router-link>
                 </v-col>
             </v-row>
             <p class="my-2">IMC</p>
@@ -76,11 +76,11 @@
                     class="d-flex flex-row-reverse"
                 >
                     <router-link
-                    :to="{ name: 'graficos', params: { title: 'IMC', data: imc, condition: 'Saludable' }, query: { debug: true }}"
+                      :to="{ name: 'graficos', params: { title: 'IMC', data: imc, child, type: 1, condition: 'Saludable' }, query: { debug: true }}"
                     >
-                    <v-btn
-                        elevation="2"
-                    >Ver gráfico</v-btn>
+                      <v-btn
+                          elevation="2"
+                      >Ver gráfico</v-btn>
                     </router-link>
                 </v-col>
             </v-row>
@@ -106,6 +106,7 @@
 <script>
 export default {
     data: () => ({
+        child: "",
         peso: {
             labels: ["Jan", "Feb", "Mar", "Apr","May","Jun"],
             datasets:[{
@@ -163,6 +164,14 @@ export default {
                 tension: 0.1
             }]
         }
-    })
+    }),
+    created() {
+        if(this.$route.query.debug) {
+            this.child = this.$route.params.child;
+            if(this.$route.query.debug) {
+                this.debug = this.$route.query.debug;
+            }
+        }
+    },
 }
 </script>

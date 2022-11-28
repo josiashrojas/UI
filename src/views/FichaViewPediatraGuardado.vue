@@ -74,7 +74,7 @@
                 </v-col>
             </v-row>
             <center>
-                <router-link :to="{ name: 'fichaPediatra', params: { date, annos, alto, peso, imc, razon}, query: { debug: true }}">
+                <router-link :to="{ name: 'fichaPediatra', params: { date, annos, alto, peso, imc, razon, child, type: 2}, query: { debug: true }}">
                     <v-btn
                         class="ma-2"
                         :loading="loading4"
@@ -136,12 +136,12 @@
         transform: rotate(360deg);
         }
     }
-
 </style>
 
 <script>
     export default {
         data: () => ({
+            child: "",
             date: (new Date(Date.now() - (new Date()).getTimezoneOffset() * 60000)).toISOString().substr(0, 10),
             debug: false,
             menu: false,
@@ -153,14 +153,17 @@
             loading4: false,
         }),
         created() {
-            this.date = this.$route.params.date;
-            this.annos = this.$route.params.annos;
-            this.alto = this.$route.params.alto;
-            this.peso = this.$route.params.peso;
-            this.imc = this.$route.params.imc;
-            this.razon = this.$route.params.razon;
             if(this.$route.query.debug) {
-                this.debug = this.$route.query.debug;
+                this.child = this.$route.params.child;
+                this.date = this.$route.params.date;
+                this.annos = this.$route.params.annos;
+                this.alto = this.$route.params.alto;
+                this.peso = this.$route.params.peso;
+                this.imc = this.$route.params.imc;
+                this.razon = this.$route.params.razon;
+                if(this.$route.query.debug) {
+                    this.debug = this.$route.query.debug;
+                }
             }
         },
         watch: {

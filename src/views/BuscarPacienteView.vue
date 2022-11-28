@@ -38,21 +38,23 @@ export default {
       ></v-text-field>
 
     <p v-if="filterItem.length == 0">No existen coincidencias</p>
-    <router-link 
-      v-for="(item,i) in filterItem"
-      :key="i"
-      to="/fichaPediatra"
-    >
-    <v-card
-      flat
-      tile
-      color="grey lighten-2"
-      class="pa-2 my-2 d-flex justify-space-between align-center"
-    >
-      <p>{{item.text}}</p>
-      <v-icon>mdi-weather-sunny</v-icon>
-    </v-card>
-  </router-link>
+    <div 
+        v-for="(item,i) in filterItem"
+        :key="i">
+      <router-link 
+        :to="{ name: 'fichaPediatra', params: { child: item.text, type: 2 }, query: { debug: true }}"
+      >
+        <v-card
+          flat
+          tile
+          color="grey lighten-2"
+          class="pa-2 my-2 d-flex justify-space-between align-center"
+        >
+          <p>{{item.text}}</p>
+          <v-icon>mdi-weather-sunny</v-icon>
+        </v-card>
+      </router-link>
+    </div>
   </main>
 </template>
 
