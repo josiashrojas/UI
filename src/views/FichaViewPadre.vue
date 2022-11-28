@@ -4,9 +4,9 @@
             <div 
                 class="d-flex justify-space-between"
             >
-                <v-icon>mdi-arrow-left</v-icon>
+                <v-icon @click="$router.back()">mdi-arrow-left</v-icon>
                 <div>
-                    <p>Otras vistas <v-icon>mdi-chevron-right</v-icon></p>
+                    <p>Otras visitas <v-icon>mdi-chevron-right</v-icon></p>
                 </div>
             </div>
             <p class="text-center my-4">11/12/2021</p>
@@ -36,7 +36,7 @@
                     cols="8"
                     class="d-flex flex-row-reverse">
                     <router-link
-                        :to="{ name: 'graficos', params: { title: 'Peso', data: peso, child, type: 1 }, query: { debug: true }}"
+                        :to="{ name: 'graficos', params: { title: 'Peso', data: peso, child, type: 1, condition: 'Saludable' }, query: { debug: true }}"
                     >
                         <v-btn
                             elevation="2"
@@ -55,13 +55,13 @@
                     cols="8"
                     class="d-flex flex-row-reverse"
                 >
-                <router-link
-                :to="{ name: 'graficos', params: { title: 'Alto', data: alto, child, type: 1 }, query: { debug: true }}"
-                    >
-                    <v-btn
-                        elevation="2"
-                    >Ver gráfico</v-btn>
-                </router-link>
+                  <router-link
+                    :to="{ name: 'graficos', params: { title: 'Alto', data: alto, child, type: 1, condition: 'Enanismo' }, query: { debug: true }}"
+                  >
+                      <v-btn
+                          elevation="2"
+                      >Ver gráfico</v-btn>
+                  </router-link>
                 </v-col>
             </v-row>
             <p class="my-2">IMC</p>
@@ -76,11 +76,11 @@
                     class="d-flex flex-row-reverse"
                 >
                     <router-link
-                    :to="{ name: 'graficos', params: { title: 'IMC', data: imc, child, type: 1 }, query: { debug: true }}"
+                      :to="{ name: 'graficos', params: { title: 'IMC', data: imc, child, type: 1, condition: 'Saludable' }, query: { debug: true }}"
                     >
-                    <v-btn
-                        elevation="2"
-                    >Ver gráfico</v-btn>
+                      <v-btn
+                          elevation="2"
+                      >Ver gráfico</v-btn>
                     </router-link>
                 </v-col>
             </v-row>

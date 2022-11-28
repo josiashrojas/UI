@@ -4,7 +4,7 @@
             <div 
                 class="d-flex justify-space-between"
             >
-                <v-icon>mdi-arrow-left</v-icon>
+                <v-icon @click="$router.back()">mdi-arrow-left</v-icon>
                 <div>
                     <p>Otras vistas <v-icon>mdi-chevron-right</v-icon></p>
                 </div>
