@@ -21,26 +21,28 @@ export default {
 
 <template>
   <main class="px-4">
-    <router-link :to="{ name: 'padre', params: { type: 1 }, query: { debug: true }}">
-      <v-card
-      flat
-      tile
-      color="grey lighten-2"
-      class="my-2 d-flex justify-center align-center"
-      >
-        <v-card-title>Padre</v-card-title>
-      </v-card>
-    </router-link>
-    <router-link :to="{ name: 'buscar', params: { type: 2 }, query: { debug: true }}">
-      <v-card
-      flat
-      tile
-      color="grey lighten-2"
-      class="my-2 d-flex justify-center align-center"
-      >
-        <v-card-title>Buscar pediatra</v-card-title>
-      </v-card>
-    </router-link>
+    <v-container>
+      <router-link :to="{ name: 'padre', params: { type: 1 }, query: { debug: true }}">
+        <v-card
+        flat
+        tile
+        color="grey lighten-2"
+        class="my-2 d-flex justify-center align-center"
+        >
+          <v-card-title>Padre</v-card-title>
+        </v-card>
+      </router-link>
+      <router-link :to="{ name: 'buscar', params: { type: 2 }, query: { debug: true }}">
+        <v-card
+        flat
+        tile
+        color="grey lighten-2"
+        class="my-2 d-flex justify-center align-center"
+        >
+          <v-card-title>Buscar pediatra</v-card-title>
+        </v-card>
+      </router-link>
+    </v-container>
   </main>
 </template>
 

@@ -1,10 +1,9 @@
 <template>
     <main class="pa-4 text-center">
-        <div class="px-2 d-flex justify-space-between">
-            <v-icon @click="$router.back()">mdi-arrow-left</v-icon>
-            <div></div>
-        </div>
         <v-container>
+            <div class="px-2 py-4 d-flex justify-space-between">
+                <v-icon @click="$router.back()">mdi-arrow-left</v-icon>
+            </div>
             <!---------------------------------- Carrusel ------------------------------------------------>
             <v-card class="pa-3.5" >
                 <p> {{title}} </p>

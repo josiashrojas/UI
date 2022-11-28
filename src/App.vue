@@ -23,7 +23,7 @@
           v-model="group"
           active-class="deep-purple--text text--accent-4"
         >
-          <div v-if="mode == 'padre'">
+          <div v-if="type == 1">
             <v-container class="px-4">
               <v-text-field
                   hide-details
@@ -35,20 +35,23 @@
                 ></v-text-field>
               <h2 class="py-4">Hijos</h2>
               <p v-if="filterItem.length == 0">No existen coincidencias</p>
-              <router-link 
+              <div
                 v-for="(item,i) in filterItem"
                 :key="i"
-                to="/fichaPadre"
               >
-              <v-card
-                flat
-                tile
-                color="grey lighten-2"
-                class="pa-2 my-2 d-flex justify-space-between align-center"
-              >
-                <p>{{item.text}}</p>
-              </v-card>
-            </router-link>
+                <router-link 
+                  :to="{ name: 'fichaPadre', params: { child: item.text, type: 1 }, query: { debug: true }}"
+                >
+                  <v-card
+                    flat
+                    tile
+                    color="grey lighten-2"
+                    class="pa-2 my-2 d-flex justify-space-between align-center"
+                  >
+                    <p>{{item.text}}</p>
+                  </v-card>
+                </router-link>
+              </div>
             </v-container>
           </div>
           <div v-else>
@@ -65,20 +68,23 @@
             </v-card>
             </router-link>
             <h2>Pacientes Recientes</h2>
-            <router-link 
-                v-for="(item,i) in filterItem"
-                :key="i"
-                to="/fichaPadre"
+            <div
+              v-for="(item,i) in filterItem"
+              :key="i"
+            >
+              <router-link 
+                :to="{ name: 'fichaPediatra', params: { child: item.text, type: 2 }, query: { debug: true }}"
               >
-              <v-card
-                flat
-                tile
-                color="grey lighten-2"
-                class="pa-2 my-2 d-flex justify-space-between align-center"
-              >
-                <p>{{item.text}}</p>
-              </v-card>
-            </router-link>
+                <v-card
+                  flat
+                  tile
+                  color="grey lighten-2"
+                  class="pa-2 my-2 d-flex justify-space-between align-center"
+                >
+                  <p>{{item.text}}</p>
+                </v-card>
+              </router-link>
+            </div>
           </div>
         </v-list-item-group>
       </v-list>

@@ -1,7 +1,6 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import HomeView from '../views/HomeView.vue'
-import AboutView from '../views/AboutView.vue'
 import MenuPrincipalPadreView from '../views/MenuPrincipalPadreView.vue'
 import BuscarPacienteView from '../views/BuscarPacienteView.vue'
 import GraficosView from '../views/GraficosView.vue'
@@ -21,12 +20,6 @@ const router = new VueRouter({
       name: 'home',
       component: HomeView
     },
-    //Borrar about
-    {
-      path: '/about',
-      name: 'about',
-      component: AboutView
-    },
     {
       path: '/padre',
       name: 'padre',
@@ -37,7 +30,6 @@ const router = new VueRouter({
       name: 'buscar',
       component: BuscarPacienteView
     },
-
     {
       path: '/graficos',
       name: 'graficos',
@@ -57,9 +49,7 @@ const router = new VueRouter({
       path: '/fichaPediatraGuardado',
       name: 'fichaPediatraGuardado',
       component: FichaViewPediatraGuardado
-
     }
-
   ]
 })
 
