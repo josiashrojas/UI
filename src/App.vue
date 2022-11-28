@@ -7,7 +7,7 @@
     >
       <v-app-bar-nav-icon @click="drawer = true"></v-app-bar-nav-icon>
 
-      <v-toolbar-title>{{ title }}</v-toolbar-title>
+      <v-toolbar-title>{{ child }}</v-toolbar-title>
     </v-app-bar>
 
     <v-navigation-drawer
@@ -56,9 +56,22 @@ export default {
   name: 'App',
 
   data: () => ({
-    title: "",
+    child: "",
+    type: 0,
     drawer: false,
     group: null,
   }),
+  beforeUpdate() {
+    if(this.$route.query.debug) {
+      this.child = this.$route.params.child;
+      this.type = this.$route.params.type;
+      if(this.$route.query.debug) {
+          this.debug = this.$route.query.debug;
+      }
+    } else {
+      this.child = "";
+      this.type = 0;
+    }
+  },
 };
 </script>

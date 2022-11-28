@@ -36,7 +36,7 @@
                     cols="8"
                     class="d-flex flex-row-reverse">
                     <router-link
-                        :to="{ name: 'graficos', params: { title: 'Peso', data: peso }, query: { debug: true }}"
+                        :to="{ name: 'graficos', params: { title: 'Peso', data: peso, child, type: 1 }, query: { debug: true }}"
                     >
                         <v-btn
                             elevation="2"
@@ -56,7 +56,7 @@
                     class="d-flex flex-row-reverse"
                 >
                 <router-link
-                :to="{ name: 'graficos', params: { title: 'Alto', data: alto }, query: { debug: true }}"
+                :to="{ name: 'graficos', params: { title: 'Alto', data: alto, child, type: 1 }, query: { debug: true }}"
                     >
                     <v-btn
                         elevation="2"
@@ -76,7 +76,7 @@
                     class="d-flex flex-row-reverse"
                 >
                     <router-link
-                    :to="{ name: 'graficos', params: { title: 'IMC', data: imc }, query: { debug: true }}"
+                    :to="{ name: 'graficos', params: { title: 'IMC', data: imc, child, type: 1 }, query: { debug: true }}"
                     >
                     <v-btn
                         elevation="2"
@@ -106,6 +106,7 @@
 <script>
 export default {
     data: () => ({
+        child: "",
         peso: {
             labels: ["Jan", "Feb", "Mar", "Apr","May","Jun"],
             datasets:[{
@@ -163,6 +164,14 @@ export default {
                 tension: 0.1
             }]
         }
-    })
+    }),
+    created() {
+        if(this.$route.query.debug) {
+            this.child = this.$route.params.child;
+            if(this.$route.query.debug) {
+                this.debug = this.$route.query.debug;
+            }
+        }
+    },
 }
 </script>

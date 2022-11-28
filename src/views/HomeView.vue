@@ -21,7 +21,7 @@ export default {
 
 <template>
   <main class="px-4">
-    <router-link to="/padre">
+    <router-link :to="{ name: 'padre', params: { type: 1 }, query: { debug: true }}">
       <v-card
       flat
       tile
@@ -31,7 +31,7 @@ export default {
         <v-card-title>Padre</v-card-title>
       </v-card>
     </router-link>
-    <router-link to="/buscar">
+    <router-link :to="{ name: 'buscar', params: { type: 2 }, query: { debug: true }}">
       <v-card
       flat
       tile

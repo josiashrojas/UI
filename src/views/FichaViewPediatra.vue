@@ -136,7 +136,7 @@
                 </v-col>
             </v-row>
             <center>
-                <router-link :to="{ name: 'fichaPediatraGuardado', params: { date, annos, alto, peso, imc, razon}, query: { debug: true }}">
+                <router-link :to="{ name: 'fichaPediatraGuardado', params: { date, annos, alto, peso, imc, razon, child, type: 2}, query: { debug: true }}">
                     <v-btn
                         class="ma-2"
                         :loading="loading4"
@@ -161,6 +161,43 @@
     p{
         margin: 0;
     }
+
+    .custom-loader {
+        animation: loader 1s infinite;
+        display: flex;
+    }
+    @-moz-keyframes loader {
+        from {
+        transform: rotate(0);
+        }
+        to {
+        transform: rotate(360deg);
+        }
+    }
+    @-webkit-keyframes loader {
+        from {
+        transform: rotate(0);
+        }
+        to {
+        transform: rotate(360deg);
+        }
+    }
+    @-o-keyframes loader {
+        from {
+        transform: rotate(0);
+        }
+        to {
+        transform: rotate(360deg);
+        }
+    }
+    @keyframes loader {
+        from {
+        transform: rotate(0);
+        }
+        to {
+        transform: rotate(360deg);
+        }
+    }
 </style>
 
 <script>
@@ -173,9 +210,11 @@
             peso: "",
             imc: "",
             razon:"",
+            loading4: false,
             }),
             created() {
             if(this.$route.query.debug) {
+                this.child = this.$route.params.child;
                 this.date = this.$route.params.date;
                 this.annos = this.$route.params.annos;
                 this.alto = this.$route.params.alto;
@@ -186,6 +225,16 @@
                     this.debug = this.$route.query.debug;
                 }
             }
+        },
+        watch: {
+            loader () {
+                const l = this.loader
+                this[l] = !this[l]
+
+                setTimeout(() => (this[l] = false), 3000)
+
+                this.loader = null
+            },
         },
     }
 </script>

@@ -1,6 +1,3 @@
-
-
-
 <template>
     <main class="pa-4 text-center">
         <v-container>
@@ -25,11 +22,7 @@
             </v-card>
         </v-container>    
     </main>
-  </template>
-
-
-    
-
+</template>
 
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <script>
@@ -44,7 +37,6 @@
                 comentarios: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum."
             }             
         },
-    
         mounted() {
             const ctx = document.querySelector(`#${this.title}`);
             
@@ -53,32 +45,6 @@
                 data: this.data,
                 
             });
-            // const ctx2 = document.querySelector('#Altura');
-            // const data2 = {
-            //     labels: labels,
-            //     datasets: [{
-            //         label: 'Altura real',
-            //         data: [65, 59, 80, 81, 56, 55, 40],
-            //         fill: false,
-            //         borderColor: 'rgba(75, 192, 192)',
-            //         backgroundColor : 'rgba(75, 192, 192)', 
-            //         tension: 0.1
-            //     },
-            //     {
-            //         label: 'Altura ideal',
-            //         data: [22, 59, 10, 83, 56, 15, 40],
-            //         fill: false,
-            //         borderColor: 'rgba(0, 0, 255)', 
-            //         backgroundColor: 'rgb(0, 0, 255)',
-            //         tension: 0.1
-                    
-            //     }],
-            // };
-            // const Altura = new Chart(ctx2, {
-            //     type: 'line',
-            //     data: data2,
-                
-            // });
         },
         created() {
             if(this.$route.query.debug) {
