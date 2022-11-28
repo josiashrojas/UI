@@ -3,8 +3,10 @@
         <v-container>
             <div 
                 class="d-flex justify-space-between"
-            >
-                <v-icon @click="$router.back()">mdi-arrow-left</v-icon>
+            >   
+                <router-link :to="{ name: 'buscar', params: { type: 2 }, query: { debug: true }}">
+                    <v-icon>mdi-arrow-left</v-icon>
+                </router-link>
                 <div>
                     <p>Otras vistas <v-icon>mdi-chevron-right</v-icon></p>
                 </div>

@@ -1,8 +1,10 @@
 <template>
     <main class="pa-4 text-center">
         <v-container>
-            <div class="px-2 py-4 d-flex justify-space-between">
-                <v-icon @click="$router.back()">mdi-arrow-left</v-icon>
+            <div class="pb-4 d-flex justify-space-between">
+                <router-link :to="{ name: 'fichaPadre', params: {child, type: 1}, query: { debug: true }}">
+                    <v-icon>mdi-arrow-left</v-icon>
+                </router-link>
             </div>
             <!---------------------------------- Carrusel ------------------------------------------------>
             <v-card class="pa-3.5" >
@@ -33,6 +35,8 @@
     export default {
         data() {
             return {
+                child: "",
+                type: 1,
                 data: this.data,
                 title: this.title,
                 conditions: ['Saludable','Problemas de Crecimiento','Gigantismo','Sobrepeso', 'Bajopeso'],
@@ -51,6 +55,7 @@
         },
         created() {
             if(this.$route.query.debug) {
+                this.child = this.$route.params.child;
                 this.title = this.$route.params.title;
                 this.data = this.$route.params.data;
                 this.condition = this.$route.params.condition;

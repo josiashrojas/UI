@@ -5,8 +5,7 @@
       color="deep-purple"
       dark
     >
-      <v-app-bar-nav-icon @click="drawer = true"></v-app-bar-nav-icon>
-
+      <v-app-bar-nav-icon v-if="type > 0" @click="drawer = true"></v-app-bar-nav-icon>
       <v-toolbar-title>{{ child }}</v-toolbar-title>
     </v-app-bar>
 
@@ -40,7 +39,7 @@
                 :key="i"
               >
                 <router-link 
-                  :to="{ name: 'fichaPadre', params: { child: item.text, type: 1 }, query: { debug: true }}"
+                  :to="{ name: 'fichaPadre', params: { child: item.text, type: 1 }, query: { debug: true, id: i }}"
                 >
                   <v-card
                     flat
@@ -54,7 +53,7 @@
               </div>
             </v-container>
           </div>
-          <div v-else>
+          <div v-else-if="type == 2">
             <router-link 
                 to="/buscar"
               >
@@ -73,7 +72,7 @@
               :key="i"
             >
               <router-link 
-                :to="{ name: 'fichaPediatra', params: { child: item.text, type: 2 }, query: { debug: true }}"
+                :to="{ name: 'fichaPediatra', params: { child: item.text, type: 2 }, query: { debug: true, id: i }}"
               >
                 <v-card
                   flat
@@ -98,49 +97,46 @@
 </template>
 
 <script>
+  export default {
+    name: 'App',
 
-export default {
-  name: 'App',
-
-  data: () => ({
-    child: "",
-    type: 0,
-    drawer: false,
-    group: null,
-    mode: 'padre',
-    items: [
-      { text: 'Juanita Perez JR.'},
-      { text: 'Veronica Perez'},
-      { text: 'Alfredo Perez'},
-    ],
-    itemsPediatra: [
-      { text: 'Juanita Perez JR.'},
-      { text: 'Veronica Perez'},
-    ],
-    filterItem: [],
-    word: '',
-  }),
-  created:function() {
-    this.filterItem = this.mode == 'padre' ? [...this.items]: [...this.itemsPediatra]
-  },
-  watch:{
-    word:function(){
-      this.filterItem = this.items.filter(item => item.text.toLowerCase().includes(this.word.toLowerCase()))
-    }
-  },
-  beforeUpdate() {
-    if(this.$route.query.debug) {
-      this.child = this.$route.params.child;
-      this.type = this.$route.params.type;
+    data: () => ({
+      child: "",
+      type: 0,
+      drawer: false,
+      group: null,
+      mode: 'padre',
+      items: [
+        { text: 'Juanita Perez JR.'},
+        { text: 'Veronica Perez'},
+        { text: 'Alfredo Perez'},
+      ],
+      itemsPediatra: [
+        { text: 'Juanita Perez JR.'},
+        { text: 'Veronica Perez'},
+      ],
+      filterItem: [],
+      word: '',
+    }),
+    watch:{
+      word:function(){
+        this.filterItem = this.items.filter(item => item.text.toLowerCase().includes(this.word.toLowerCase()))
+      },
+    },
+    beforeUpdate() {
       if(this.$route.query.debug) {
-          this.debug = this.$route.query.debug;
+        this.filterItem = this.type == 1 ? [...this.items]: [...this.itemsPediatra]
+        this.child = this.$route.params.child;
+        this.type = this.$route.params.type;
+        if(this.$route.query.debug) {
+            this.debug = this.$route.query.debug;
+        }
+      } else {
+        this.child = "";
+        this.type = 2;
       }
-    } else {
-      this.child = "";
-      this.type = 0;
     }
-  },
-};
+  };
 </script>
 
 <style scoped>
